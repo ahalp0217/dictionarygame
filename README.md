@@ -1,5 +1,3 @@
-<img width="55" alt="portfolio_view" src="http://dictionarygame.io/static/images/logo_dictionary.png">
-
 # dictionarygame.io
 Fool your friends with fake definitions for real words. Based off the popular parlor game [Fictionary](https://en.wikipedia.org/wiki/Fictionary).
 
@@ -19,3 +17,5 @@ python app.py
 
 * [Python-socketio](https://github.com/miguelgrinberg/python-socketio) - Web Framework
 * [UIKit](https://getuikit.com/) - CSS Styling
+
+<img width="55" alt="portfolio_view" src="http://dictionarygame.io/static/images/logo_dictionary.png">
