@@ -1,0 +1,64 @@
+* {
+  font-family: 'Patua One' !important;
+}
+
+.avatars {
+  border-radius: 50%;
+}
+
+.blackwhite {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: all .2s ease-in-out;
+}
+
+.blackwhite:hover {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  transform: scale(1.2)
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 10px !important;
+}
+
+.logotitle {
+  color: #fff;
+  text-shadow: 1px 1px #0c65bd;
+}
+
+.logotitle:hover{
+  color: #f3f3f3;
+  text-shadow: 2px 2px #0c65bd;
+}
+
+.navbackground {
+  background: #1e87f0 !important; /* Hardcoded color */
+}
+
+.uk-notification-message {
+  border: 1px solid #1e87f0 !important;
+  border-radius: 2px;
+  font-size: 14px !important;
+}
+
+#messagebox {
+  height:250px !important;
+}
+
+#chatbox {
+  height:250px !important;
+  overflow:auto;
+  border-top: 2px solid #f5f5f5;
+  border-left: 2px solid #f5f5f5;
+  border-right: 2px solid #f5f5f5;
+  padding: 12px;
+}
