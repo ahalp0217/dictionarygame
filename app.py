@@ -300,4 +300,3 @@ if __name__ == '__main__':
 
 #This was important to run with NGINX
 #https://github.com/socketio/socket.io/issues/1942 otherwise had handshake errors
-'''
