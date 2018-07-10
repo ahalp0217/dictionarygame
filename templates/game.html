@@ -6,12 +6,12 @@
       <div class="uk-container">
         <div uk-grid uk-child-width-expand@s>
             <div class="uk-width-2-3@m">
-                <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-card uk-card-default uk-card-body uk-card-small">
                   <span class = "uk-text-meta" id="round"></span>
-                  <h1 class="uk-heading-primary" id ="word">Waiting for players...</h1>
+                  <h2 id ="word">Waiting for players...</h2>
                     <input class="uk-input" type="text" id="definitioninput" placeholder="Make up a definition...">
                     <div class = "uk-margin">
-                      <button class="uk-button uk-button-primary uk-disabled" disabled id="submitdefinition">Submit Definition</button>
+                      <button class="uk-button uk-button-primary uk-disabled uk-hidden" disabled id="submitdefinition">Submit Definition</button>
                       <button class="uk-button uk-button-primary" id="startgame">Start Game</a>
                       <button class="uk-button uk-button-primary uk-hidden" id="nextround">Next Round</button>
                       <button class="uk-button uk-button-primary uk-hidden" id="gamesummary" href="#modal-summary" uk-toggle>View Game Summary</button>
@@ -23,8 +23,9 @@
                 </div>
             </div>
             <div class="uk-width-1-3@m">
-                <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-card uk-card-default uk-card-body" id="rightbox">
                   <div class="uk-margin">
+                    <div id = "leaderboard"></div>
                     <div id = "messagebox uk-margin">
                       <div id = "chatbox">
                         <ul class="uk-list" id = "chatmessages">
@@ -33,8 +34,6 @@
                       </div>
                         <input class="uk-input" type="text" id="sendmessage" placeholder="Send a message...">
                     </div>
-                    <hr class="uk-divider-icon">
-                    <div id = "leaderboard"></div>
                   </div>
                 </div>
                 <br>

@@ -51,14 +51,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #messagebox {
+  height:220px !important;
+}
+
+#leaderboard {
+  height: 250px !important
+}
+
+#leaderboardinner {
   height:250px !important;
+  overflow:auto;
 }
 
 #chatbox {
-  height:250px !important;
+  height:220px !important;
   overflow:auto;
   border-top: 2px solid #f5f5f5;
   border-left: 2px solid #f5f5f5;
   border-right: 2px solid #f5f5f5;
   padding: 12px;
+}
+
+#rightbox {
+  padding: 0px !important;
 }

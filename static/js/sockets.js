@@ -67,8 +67,9 @@ socket.on('renderScoreBoard', players => {
                 <td class="uk-align-right uk-text-meta">${players[i].player_state}</td>
               </tr>`
   }
-  output += "</tbody></table>"
-  $("#leaderboard").html(output)
+  output += "</tbody></table>";
+  output = "<div id ='leaderboardinner'>" + output + "</div>";
+  $("#leaderboard").html(output);
 });
 
 
@@ -84,6 +85,8 @@ $("#startgame").on("click", function () {
 socket.on('emitstartgame', data => {
     $("#definitioninput").focus();
     $("#submitdefinition").removeClass("uk-disabled");
+    $("#submitdefinition").removeClass("uk-hidden");
+    $("#submitdefinition").addClass("uk-animation-scale-down");
     $("#submitdefinition").prop("disabled", false);
     let currentRoundNumber = data.current_round_num;
     let totalRoundNum = data.total_rounds;
@@ -124,7 +127,7 @@ socket.on("showdefinitions", players => {
   let output = "";
   let i;
   for (i = 0; i < players.length; i++) {
-    output += `<div class="uk-margin uk-width-1-1"><div class="uk-card uk-card-default uk-card-body uk-card-hover uk-animation-slide-top-medium">
+    output += `<div class="uk-margin uk-width-1-1"><div class="uk-card uk-card-default uk-card-body uk-card-small uk-card-hover uk-animation-slide-top-medium">
                 <h3 class="uk-card-title answercardheader" data-player="${players[i].player_name}"><span class="uk-badge">${i + 1}</span></h3>
                 <p>${players[i].definition}</p>
                 <button class="uk-button uk-button-danger uk-animation-scale-down vote" data-player="${players[i].player_name}">
@@ -149,6 +152,7 @@ $(document).on("click", ".vote", function () {
 })
 
 socket.on("revealanswers", data => {
+  $("#submitdefinition").removeClass("uk-animation-scale-down"); //Todo this shouldn't be here
   $("#word").removeClass("uk-animation-slide-right") //Todo this shouldn't be here
   //Reveal players above their answer cards
   $('.answercardheader').each(function(i, obj) {
@@ -171,6 +175,7 @@ socket.on("revealanswers", data => {
 
   //Reveal next round button
   $("#nextround").removeClass("uk-hidden")
+  $("#nextround").addClass("uk-animation-scale-down");
 
   document.title = "See Answers"
 });
@@ -184,6 +189,7 @@ socket.on("nextroundstarting", data => {
   $("#round").removeClass("uk-hidden");
   $("#definitioninput").focus();
   $("#submitdefinition").removeClass("uk-disabled");
+  $("#submitdefinition").addClass("uk-animation-scale-down");
   $("#submitdefinition").prop("disabled", false);
   let currentRoundNumber = data.current_round_num;
   let totalRoundNum = data.total_rounds;
