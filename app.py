@@ -240,7 +240,7 @@ def on_send_message(data):
     message = { "player_name" : data['player_name'],
                 "message" : strip_tags(data['message'])
               }
-    socketio.emit("sendbackmessage", data, room=game_id)
+    socketio.emit("sendbackmessage", message, room=game_id)
 
 @socketio.on('showsummary')
 def on_summary():
