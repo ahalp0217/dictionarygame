@@ -70,7 +70,9 @@ class Game(object):
             line = random.choice(lines)
             word = line.split("|")[0]
             definition = line.split("|")[1]
-            randomWords.append({"word": word, "definition": definition})
+            definition = definition[0].lower() + definition[1:]
+            definition = definition.rstrip(".")
+            randomWords.append({"word": word, "definition": })
         return randomWords
 
     def get_player_instance(self, player_name):

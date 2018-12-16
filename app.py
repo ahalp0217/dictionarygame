@@ -85,7 +85,6 @@ def game(gameid):
     except KeyError:
         game = GAME_ROOMS.get(gameid)
         if game:
-            print(game.game_state)
             if game.game_state != GAME_STATES['PREGAME']:
                 flash('Game already started. Sawwy.')
                 return redirect(url_for('home'))
@@ -142,14 +141,15 @@ def on_disconnect():
         GAME_ROOMS.pop(game_id, None)
         return
 
-    if game.is_voting_time():
-        reveal_definitions(game, game_id)
-    elif game.is_reveal_time():
-        reveal_answers(game, game_id)
+    if game.game_state != GAME_STATES["POSTGAME"]:
+        if game.is_voting_time():
+            reveal_definitions(game, game_id)
+        elif game.is_reveal_time():
+            reveal_answers(game, game_id)
 
-    game = convert_to_json(game)
-    socketio.emit("showplayersubmissionprogress", game['players'], room=game_id)
-    socketio.emit('renderScoreBoard', game["players"], room=game_id)
+        game = convert_to_json(game)
+        socketio.emit("showplayersubmissionprogress", game['players'], room=game_id)
+        socketio.emit('renderScoreBoard', game["players"], room=game_id)
 
 @socketio.on('startgame')
 def on_startround():
@@ -284,6 +284,7 @@ def reveal_answers(game, game_id):
     socketio.emit("revealanswers", convert_to_json(data), room=game_id)
 
 def reveal_match_summary(game, game_id):
+    game.game_state = GAME_STATES["POSTGAME"]
 
     game.calculate_winning_players()
     game.calculate_losing_players()
@@ -300,3 +301,5 @@ if __name__ == '__main__':
 
 #This was important to run with NGINX
 #https://github.com/socketio/socket.io/issues/1942 otherwise had handshake errors
+
+#Start on server: nohup python app.py

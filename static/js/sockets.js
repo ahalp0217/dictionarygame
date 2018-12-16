@@ -30,6 +30,8 @@ socket.on('disconnect', function() {
 });
 
 socket.on("notification", notification => {
+  //Attach message in chatbox to keep persistent
+  $("#chatmessages").append("<span>" + notification + "</span>");
   sendNotification(notification);
 });
 
@@ -140,7 +142,8 @@ socket.on("showdefinitions", players => {
               </div></div>`
   }
   $("#definitions").html(output)
-  document.title = "Time to Vote";
+  document.title = "It's voting time!";
+  textToSpeech(document.title);
 })
 
 $(document).on("click", ".vote", function () {
@@ -177,7 +180,8 @@ socket.on("revealanswers", data => {
   $("#nextround").removeClass("uk-hidden")
   $("#nextround").addClass("uk-animation-scale-down");
 
-  document.title = "See Answers"
+  document.title = "Everyone voted! See results."
+  textToSpeech("Everyone voted!")
 });
 
 $("#nextround").on("click", function () {
@@ -188,6 +192,8 @@ socket.on("nextroundstarting", data => {
   $("#nextround").addClass("uk-hidden");
   $("#round").removeClass("uk-hidden");
   $("#definitioninput").focus();
+  //Clear last answer
+  $("#definitioninput").val("");
   $("#submitdefinition").removeClass("uk-disabled");
   $("#submitdefinition").addClass("uk-animation-scale-down");
   $("#submitdefinition").prop("disabled", false);
